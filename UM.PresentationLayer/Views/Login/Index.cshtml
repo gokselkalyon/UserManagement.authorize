@@ -1,0 +1,51 @@
+﻿@model UM.PresentationLayer.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="login-container">
+            <div id="output" class="bg-danger"><span style="text-transform:uppercase;">@ViewBag.mesaj</span></div>
+            <div class="avatar"></div>
+            <div class="form-box">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                {
+                    @Html.TextBoxFor(u => u.First_Name, new { placeholder = "ad" })
+                    @Html.PasswordFor(u => u.Password, new { placeholder = "şifre" })
+                    <br />
+                    <br />
+                    <div class="g-recaptcha" data-sitekey="6LekUuwUAAAAAG8zqC_ACUreNUKCkFrwT_drUtOc"></div>
+                    <br />
+                    @TempData["Message"]
+
+                    <button class="btn btn-info btn-block login" type="submit">Login</button>
+                }
+                <br />
+                <span>
+                    <h2>Admin</h2>
+                    <br /> kullanıcı adı: admin
+                    <br /> şifre :1
+                    <hr />
+                    <h2>user</h2>
+                    <br /> kullanıcı adı: GOKSEL
+                    <br /> şifre :GOKSEL1
+                </span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
